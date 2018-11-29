@@ -46,7 +46,7 @@ void Desenha(void)
 	// Inicializa sistema de coordenadas do modelo
 	glLoadIdentity();
 	// Especifica posição do observador e do alvo
- 	gluLookAt(0,80,200, 0,0,0, 0,1,0);
+ 	gluLookAt(0,80,400, 0,0,0, 0,1,0);
 	// Limpa a janela e o depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -54,6 +54,8 @@ void Desenha(void)
 	glRotatef(eixoY, 0.0f, 1.0f, 0.0f);
 	glRotatef(eixoZ, 1.0f, 0.0f, 0.0f);
 	
+	glScalef(1.5f, 1.5f, 1.5f);
+
 	//=============teto do carro==========/
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glPushMatrix();
@@ -63,94 +65,401 @@ void Desenha(void)
 		glScalef(0.28f, 4.0f, 0.28f);
 	glPopMatrix();
 
-	glTranslatef(20.0f, 0.0f, 0.0f);
 	glPushMatrix();
+	glTranslatef(20.0f, 0.0f, 0.0f);
 	glColor3f(0.0f, 1.0f, 0.0f);
 		glScalef(3.5f, 0.25f, 3.5f);
 		glutSolidCube(20.0f);
-		glScalef(0.28f, 4.0f, 0.28f);
 	glPopMatrix();	
-	glTranslatef(-20.0f, 0.0f, 0.0f);
 	//=========Fim do teto do carrro==========/
 	
 	//==========astes do parabrisa==========/
+	glPushMatrix();
 	glTranslatef(-45.0f, -15.0f, -32.0f);
 	glRotatef(45.0f, 0.0f, 0.0f, 1.0f);
-	glPushMatrix();
 	glColor3f(0.0f, 1.0f, 0.0f);
 		glScalef(2.0f, 0.125f, 0.25f);
 		glutSolidCube(20.0f);
-		glScalef(0.5f, 8.0f, 4.0f);
 	glPopMatrix();
-	glRotatef(-45.0f, 0.0f, 0.0f, 1.0f);
-	glTranslatef(45.0f, 15.0f, 32.0f);
 
+	glPushMatrix();
 	glTranslatef(-45.0f, -15.0f, 32.0f);
 	glRotatef(45.0f, 0.0f, 0.0f, 1.0f);
-	glPushMatrix();
 	glColor3f(0.0f, 1.0f, 0.0f);
 		glScalef(2.0f, 0.125f, 0.25f);
 		glutSolidCube(20.0f);
-		glScalef(0.5f, 8.0f, 4.0f);
 	glPopMatrix();	
-	glRotatef(-45.0f, 0.0f, 0.0f, 1.0f);
-	glTranslatef(45.0f, 15.0f, -32.0f);
 	//====fim das astes do parabrisa==========/
 
 	//==========astes do vidro de tras==========/
+	glPushMatrix();
 	glTranslatef(60.0f, -13.0f, -32.0f);
 	glRotatef(-55.0f, 0.0f, 0.0f, 1.0f);
-	glPushMatrix();
 	glColor3f(0.0f, 1.0f, 0.0f);
 		glScalef(1.5f, 0.125f, 0.25f);
 		glutSolidCube(20.0f);
-		glScalef(0.75f, 8.0f, 4.0f);
 	glPopMatrix();
-	glRotatef(55.0f, 0.0f, 0.0f, 1.0f);
-	glTranslatef(-60.0f, 13.0f, 32.0f);
 
-	glTranslatef(60.0f, -13.0f, 32.0f);
-	glRotatef(-55.0f, 0.0f, 0.0f, 1.0f);
 	glPushMatrix();
-	glColor3f(0.0f, 1.0f, 0.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glTranslatef(60.0f, -13.0f, 32.0f);
+		glRotatef(-55.0f, 0.0f, 0.0f, 1.0f);
 		glScalef(1.5f, 0.125f, 0.25f);
 		glutSolidCube(20.0f);
-		glScalef(0.75f, 8.0f, 4.0f);
 	glPopMatrix();	
-	glRotatef(55.0f, 0.0f, 0.0f, 1.0f);
-	glTranslatef(-60.0f, 13.0f, -32.0f);
+
 	//====fim das astes do vidro de tras==========/
 
 	//===========inicio do capô===============/
-	glTranslatef(-75.0f, -33.0f, 0.0f);
 	glPushMatrix();
+	glTranslatef(-75.0f, -33.0f, 0.0f);
 	//glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
 	glColor3f(0.0f, 1.0f, 0.0f);
 		glScalef(2.0f, 1.0f, 3.5f);
 		glutSolidCube(20.0f);
-		glScalef(0.5f, 1.0f, 0.285f);
 	glPopMatrix();
 	//glRotatef(-10.0f, 0.0f, 0.0f, 1.0f);
-	glTranslatef(75.0f, 33.0f, 0.0f);
 	
 
-	glTranslatef(-93.0f, -33.0f, -23.0f);
-	glColor3f(1.0f, 1.0f, 0.0f);
 	glPushMatrix();
+		glTranslatef(-93.0f, -33.0f, -23.0f);
+		glColor3f(1.0f, 1.0f, 0.0f);
 		glutSolidSphere(5.0f, 10, 10);
 	glPopMatrix();
-	glTranslatef(93.0f, 33.0f, 23.0f);
 
-	glTranslatef(-93.0f, -33.0f, 23.0f);
-	glColor3f(1.0f, 1.0f, 0.0f);
 	glPushMatrix();
+		glTranslatef(-93.0f, -33.0f, 23.0f);
+		glColor3f(1.0f, 1.0f, 0.0f);
 		glutSolidSphere(5.0f, 10, 10);
 	glPopMatrix();
-	glTranslatef(93.0f, 33.0f, -23.0f);
 
-
-
+	glPushMatrix();
+	glTranslatef(-95.0f, -34.0f, 0.0f);
+	//glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
+	glColor3f(1.0f, 1.0f, 1.0f);
+		glScalef(0.5f, 1.5f, 3.5f);
+		glutSolidCube(5.0f);
+	glPopMatrix();
+	
 	//========fim do inicio do capô============/
+
+	//==========portas da frente===================/
+	glPushMatrix();
+		glTranslatef(-30.0f, -33.0f, 34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(2.5f, 1.0f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//massaneta
+	glPushMatrix();
+		glTranslatef(-20.0f, -28.0f, 36.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
+		glScalef(1.0f, 0.2f, 0.2f);
+		glutSolidCube(10.0f);
+	glPopMatrix();
+
+
+	glPushMatrix();
+		glTranslatef(-5.0f, -23.0f, 34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.125f, 2.0f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+
+
+	glPushMatrix();
+		glTranslatef(-17.0f, -4.0f, 34.0f);
+		glRotatef(90.0f, 0.0f, 0.0f, 1.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.125f, 1.3f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(-41.5f, -15.0f, 34.0f);
+		glRotatef(-45.0f, 0.0f, 0.0f, 1.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.125f, 1.7f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//massaneta
+	glPushMatrix();
+		glTranslatef(-20.0f, -28.0f, -36.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
+		glScalef(1.0f, 0.2f, 0.2f);
+		glutSolidCube(10.0f);
+	glPopMatrix();
+
+
+	glPushMatrix();
+		glTranslatef(-30.0f, -33.0f, -34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(2.5f, 1.0f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+
+	glPushMatrix();
+		glTranslatef(-5.0f, -23.0f, -34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.125f, 2.0f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(-17.0f, -4.0f, -34.0f);
+		glRotatef(90.0f, 0.0f, 0.0f, 1.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.125f, 1.3f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(-41.5f, -15.0f, -34.0f);
+		glRotatef(-45.0f, 0.0f, 0.0f, 1.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.125f, 1.7f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+
+	//==========fim das portas da frente=============/
+	//==============divisão entre portas============/
+	glPushMatrix();
+		glTranslatef(-2.0f, -23.0f, 34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.25f, 2.02f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(-2.0f, -23.0f, -34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.25f, 2.02f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//=============fim da divisao===================//
+	//================portas da tras=============/
+	glPushMatrix();
+		glTranslatef(20.0f, -33.0f, 34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(2.0f, 1.0f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//massaneta
+	glPushMatrix();
+		glTranslatef(25.0f, -28.0f, 36.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
+		glScalef(1.0f, 0.2f, 0.2f);
+		glutSolidCube(10.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(0.0f, -23.0f, 34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.125f, 2.0f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(14.0f, -4.0f, 34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(1.5f, 0.125f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(33.0f, -14.0f, 34.0f);
+		glRotatef(-62.0f, 0.0f, 0.0f, 1.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(1.2f, 0.125f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(20.0f, -33.0f, -34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(2.0f, 1.0f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//massaneta
+	glPushMatrix();
+		glTranslatef(25.0f, -28.0f, -36.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
+		glScalef(1.0f, 0.2f, 0.2f);
+		glutSolidCube(10.0f);
+	glPopMatrix();
+
+
+	glPushMatrix();
+		glTranslatef(0.0f, -23.0f, -34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.125f, 2.0f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(14.0f, -4.0f, -34.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(1.5f, 0.125f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(33.0f, -14.0f, -34.0f);
+		glRotatef(-62.0f, 0.0f, 0.0f, 1.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(1.2f, 0.125f, 0.125f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//==========fim das portas da tras=============/
+
+	//==============bagageiro================//
+
+	glPushMatrix();
+	glTranslatef(55.0f, -33.0f, 0.0f);
+	//glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
+	glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(1.5f, 1.0f, 3.5f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(70.0f, -33.0f, -23.0f);
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glutSolidSphere(5.0f, 10, 10);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(70.0f, -33.0f, 23.0f);
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glutSolidSphere(5.0f, 10, 10);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(70.0f, -34.0f, 0.0f);
+	//glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
+	glColor3f(1.0f, 1.0f, 1.0f);
+		glScalef(0.5f, 1.5f, 3.5f);
+		glutSolidCube(5.0f);
+	glPopMatrix();
+
+	// glPushMatrix();
+	// 	glTranslatef(75.0f, -33.0f, -23.0f);
+	// 	glColor3f(1.0f, 1.0f, 1.0f);
+	// 	glutSolidSphere(1.0f, 10, 10);
+	// glPopMatrix();
+
+	// glPushMatrix();
+	// 	glTranslatef(75.0f, -33.0f, 23.0f);
+	// 	glColor3f(2.0f, 1.0f, 1.0f);
+	// 	glutSolidSphere(1.0f, 10, 10);
+	// glPopMatrix();
+	//============fim bagageiro============================//
+
+	//====================vidros================//
+
+	//frente
+	glPushMatrix();
+	glTranslatef(-45.0f, -15.0f, 0.0f);
+	glRotatef(-45.0f, 0.0f, 0.0f, 1.0f);
+	glColor3f(0.0f, 0.0f, 1.0f);
+		glScalef(0.125f, 1.7f, 3.2f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//tras
+	glPushMatrix();
+	glTranslatef(60.0f, -13.0f, 0.0f);
+	glRotatef(35.0f, 0.0f, 0.0f, 1.0f);
+	glColor3f(0.0f, 0.0f, 1.0f);
+		glScalef(0.125f, 1.3f, 2.95f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//============lateral esquerda===========//
+	
+	//porta da frente
+	glPushMatrix();
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glBegin(GL_QUADS);				// start drawing a polygon (4 sided)
+	  		glVertex3f(-4.0f, -40.0f, 34.0f);		// Top Left
+	  		glVertex3f( -4.0f, -5.0f, 34.0f);		// Top Right
+		 	glVertex3f( -30.0f, -5.0f, 34.0f);		// Bottom Right
+		  	glVertex3f(-63.0f, -40.0f, 34.0f);		// Bottom Left	
+	  	glEnd();	
+	glPopMatrix();
+	
+	//porta de tras
+
+	glPushMatrix();
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glBegin(GL_QUADS);				// start drawing a polygon (4 sided)
+	  		glVertex3f(0.0f, -40.0f, 34.0f);		// Top Left
+	  		glVertex3f( 0.0f, -5.0f, 34.0f);		// Top Right
+		 	glVertex3f( 30.0f, -5.0f, 34.0f);		// Bottom Right
+		  	glVertex3f(40.0f, -40.0f, 34.0f);		// Bottom Left	
+	  	glEnd();	
+	glPopMatrix();
+
+	//==================lateral direita=================/
+
+	//porta da frente
+	glPushMatrix();
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glBegin(GL_QUADS);				// start drawing a polygon (4 sided)
+	  		glVertex3f(-4.0f, -40.0f, -34.0f);		// Top Left
+	  		glVertex3f( -4.0f, -5.0f, -34.0f);		// Top Right
+		 	glVertex3f( -30.0f, -5.0f, -34.0f);		// Bottom Right
+		  	glVertex3f(-63.0f, -40.0f, -34.0f);		// Bottom Left	
+	  	glEnd();	
+	glPopMatrix();
+
+	//porta de tras
+
+	glPushMatrix();
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glBegin(GL_QUADS);				// start drawing a polygon (4 sided)
+	  		glVertex3f(0.0f, -40.0f, -34.0f);		// Top Left
+	  		glVertex3f( 0.0f, -5.0f, -34.0f);		// Top Right
+		 	glVertex3f( 30.0f, -5.0f, -34.0f);		// Bottom Right
+		  	glVertex3f(40.0f, -40.0f, -34.0f);		// Bottom Left	
+	  	glEnd();	
+	glPopMatrix();
+
+	//===============fim dos vidros================//
+
+
+	//================parte sem vidro da lateral de tras===================//
+
+	glPushMatrix();
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glBegin(GL_QUADS);				// start drawing a polygon (4 sided)
+	  		glVertex3f(37.0f, -25.0f, 34.0f);		// Top Left
+	  		glVertex3f( 27.0f, -2.0f, 34.0f);		// Top Right
+		 	glVertex3f( 53.0f, -2.0f, 34.0f);		// Bottom Right
+		  	glVertex3f(68.0f, -25.0f, 34.0f);		// Bottom Left	
+	  	glEnd();	
+	glPopMatrix();
+
+	glPushMatrix();
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glBegin(GL_QUADS);				// start drawing a polygon (4 sided)
+	  		glVertex3f(37.0f, -25.0f, -34.0f);		// Top Left
+	  		glVertex3f( 27.0f, -2.0f, -34.0f);		// Top Right
+		 	glVertex3f( 53.0f, -2.0f, -34.0f);		// Bottom Right
+		  	glVertex3f(68.0f, -25.0f, -34.0f);		// Bottom Left	
+	  	glEnd();	
+	glPopMatrix();
+
+	//============fim da parte sem vidro da lateral de tras===============//
 
 
 
@@ -198,10 +507,10 @@ void Inicializa (void)
 	GLfloat luzAmbiente[4]={0.2,0.2,0.2,1.0}; 
 	GLfloat luzDifusa[4]={0.7,0.7,0.7,1.0};		 // "cor" 
 	GLfloat luzEspecular[4]={1.0, 1.0, 1.0, 1.0};// "brilho" 
-	GLfloat posicaoLuz[4]={0.0, 50.0, 50.0, 1.0};
+	GLfloat posicaoLuz[4]={0.0, 80.0, 400.0, 1.0};
 
 	// Capacidade de brilho do material
-	GLfloat especularidade[4]={1.0,1.0,1.0,1.0}; 
+	GLfloat especularidade[4]={0.0,0.0,0.0,0.5}; 
 	GLint especMaterial = 60;
 
  	// Especifica que a cor de fundo da janela será preta
