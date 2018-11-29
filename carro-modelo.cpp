@@ -4,8 +4,7 @@
 #include <GL/glut.h>
 #include <KHR/khrplatform.h>
 GLfloat angle, fAspect;
-GLfloat rotacao_ombro = 180.0f, rotacao_cotovelo = -45.0f, translacao_dedo1 = -3.0f, translacao_dedo2 = 1.5f;
-GLfloat eixoX = 180.0f, eixoY = 180.0f, eixoZ = 180.0;
+GLfloat eixoX = 0.0f, eixoY = 0.0f, eixoZ = 0.0;
 
 
 void DesenhaEixos(void)
@@ -27,12 +26,12 @@ void processKeys(unsigned char key, int x, int y) {
 
 	switch(key){
 		case 27: exit(0); break;
-		case 's': eixoZ+=2.1; break;
-		case 'w': eixoZ-=2.1; break;
-		case 'q': eixoX+=2.1; break;
-		case 'e': eixoX-=2.1; break;
-		case 'a': eixoY+=2.1; break;
-		case 'd': eixoY-=2.1; break;
+		case 's': eixoZ+=2.1; if(eixoZ > 180) eixoZ = 180; break;
+		case 'w': eixoZ-=2.1; if(eixoZ < -180) eixoZ = -180; break;
+		case 'q': eixoX+=2.1; if(eixoX > 180) eixoX = 180; break;
+		case 'e': eixoX-=2.1; if(eixoX < -180) eixoX = -180; break;
+		case 'a': eixoY+=2.1; if(eixoY > 180) eixoY = 180; break;
+		case 'd': eixoY-=2.1; if(eixoY < -180) eixoY = -180; break;
 		// case 'z': translacao_dedo1+=1.0; translacao_dedo2-=1.0; if (translacao_dedo1 > 0) translacao_dedo1 = 0; if (translacao_dedo2 < 0) translacao_dedo2 = 0; break;
 		// case 'x': translacao_dedo1-=1.0; translacao_dedo2+=1.0; if (translacao_dedo1 < -3) translacao_dedo1 = -3;if (translacao_dedo2 > 1.5) translacao_dedo2 = 1.5; break;
 	}
@@ -99,7 +98,7 @@ void Desenha(void)
 	//====fim das astes do parabrisa==========/
 
 	//==========astes do vidro de tras==========/
-	glTranslatef(60.0f, -15.0f, -32.0f);
+	glTranslatef(60.0f, -13.0f, -32.0f);
 	glRotatef(-55.0f, 0.0f, 0.0f, 1.0f);
 	glPushMatrix();
 	glColor3f(0.0f, 1.0f, 0.0f);
@@ -108,9 +107,9 @@ void Desenha(void)
 		glScalef(0.75f, 8.0f, 4.0f);
 	glPopMatrix();
 	glRotatef(55.0f, 0.0f, 0.0f, 1.0f);
-	glTranslatef(-60.0f, 15.0f, 32.0f);
+	glTranslatef(-60.0f, 13.0f, 32.0f);
 
-	glTranslatef(60.0f, -15.0f, 32.0f);
+	glTranslatef(60.0f, -13.0f, 32.0f);
 	glRotatef(-55.0f, 0.0f, 0.0f, 1.0f);
 	glPushMatrix();
 	glColor3f(0.0f, 1.0f, 0.0f);
@@ -119,22 +118,36 @@ void Desenha(void)
 		glScalef(0.75f, 8.0f, 4.0f);
 	glPopMatrix();	
 	glRotatef(55.0f, 0.0f, 0.0f, 1.0f);
-	glTranslatef(-60.0f, 15.0f, -32.0f);
+	glTranslatef(-60.0f, 13.0f, -32.0f);
 	//====fim das astes do vidro de tras==========/
 
 	//===========inicio do capô===============/
 	glTranslatef(-75.0f, -33.0f, 0.0f);
 	glPushMatrix();
-	glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
+	//glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
 	glColor3f(0.0f, 1.0f, 0.0f);
-		glScalef(2.1f, 0.125f, 3.5f);
+		glScalef(2.0f, 1.0f, 3.5f);
 		glutSolidCube(20.0f);
-		glScalef(0.476f, 8.0f, 0.285f);
+		glScalef(0.5f, 1.0f, 0.285f);
 	glPopMatrix();
-	glRotatef(-10.0f, 0.0f, 0.0f, 1.0f);
+	//glRotatef(-10.0f, 0.0f, 0.0f, 1.0f);
 	glTranslatef(75.0f, 33.0f, 0.0f);
 	
-	
+
+	glTranslatef(-93.0f, -33.0f, -23.0f);
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glPushMatrix();
+		glutSolidSphere(5.0f, 10, 10);
+	glPopMatrix();
+	glTranslatef(93.0f, 33.0f, 23.0f);
+
+	glTranslatef(-93.0f, -33.0f, 23.0f);
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glPushMatrix();
+		glutSolidSphere(5.0f, 10, 10);
+	glPopMatrix();
+	glTranslatef(93.0f, 33.0f, -23.0f);
+
 
 
 	//========fim do inicio do capô============/
