@@ -6,6 +6,7 @@
 GLfloat angle, fAspect;
 GLfloat eixoX = 0.0f, eixoY = 0.0f, eixoZ = 0.0;
 
+GLfloat asas = 0.0f;
 
 void DesenhaEixos(void)
 {
@@ -32,6 +33,8 @@ void processKeys(unsigned char key, int x, int y) {
 		case 'e': eixoX-=2.1; if(eixoX < -180) eixoX = -180; break;
 		case 'a': eixoY+=2.1; if(eixoY > 180) eixoY = 180; break;
 		case 'd': eixoY-=2.1; if(eixoY < -180) eixoY = -180; break;
+		case 'b': asas = 8.5f; break;
+		case 'n': asas = 0.0f; break;
 		// case 'z': translacao_dedo1+=1.0; translacao_dedo2-=1.0; if (translacao_dedo1 > 0) translacao_dedo1 = 0; if (translacao_dedo2 < 0) translacao_dedo2 = 0; break;
 		// case 'x': translacao_dedo1-=1.0; translacao_dedo2+=1.0; if (translacao_dedo1 < -3) translacao_dedo1 = -3;if (translacao_dedo2 > 1.5) translacao_dedo2 = 1.5; break;
 	}
@@ -134,7 +137,7 @@ void Desenha(void)
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(-95.0f, -34.0f, 0.0f);
+	glTranslatef(-95.0f, -44.0f, 0.0f);
 	//glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
 	glColor3f(1.0f, 1.0f, 1.0f);
 		glScalef(0.5f, 1.5f, 3.5f);
@@ -344,7 +347,7 @@ void Desenha(void)
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(70.0f, -34.0f, 0.0f);
+	glTranslatef(70.0f, -44.0f, 0.0f);
 	//glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
 	glColor3f(1.0f, 1.0f, 1.0f);
 		glScalef(0.5f, 1.5f, 3.5f);
@@ -460,8 +463,44 @@ void Desenha(void)
 	glPopMatrix();
 
 	//============fim da parte sem vidro da lateral de tras===============//
+	//=====================parte de baixo============================//
 
+	glPushMatrix();
+		glTranslatef(-12.0f, -42.0f, 0.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(8.2f, 0.125f, 3.5f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
 
+	glPushMatrix();
+		glTranslatef(-85.0f, -50.0f, 0.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(1.0f, 0.7f, 3.5f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(-10.0f, -50.0f, 0.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(3.0f, 0.7f, 3.5f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(63.0f, -50.0f, 0.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(0.7f, 0.7f, 3.5f);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(-12.0f, -42.0f, 0.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(2.0f, 0.125f, asas);
+		glutSolidCube(20.0f);
+	glPopMatrix();
+
+	//=====================fim parte de baixo==========================//
 
 
 	DesenhaEixos();
