@@ -96,6 +96,51 @@ void Desenha(void)
 	glPopMatrix();	
 	glRotatef(-45.0f, 0.0f, 0.0f, 1.0f);
 	glTranslatef(45.0f, 15.0f, -32.0f);
+	//====fim das astes do parabrisa==========/
+
+	//==========astes do vidro de tras==========/
+	glTranslatef(60.0f, -15.0f, -32.0f);
+	glRotatef(-55.0f, 0.0f, 0.0f, 1.0f);
+	glPushMatrix();
+	glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(1.5f, 0.125f, 0.25f);
+		glutSolidCube(20.0f);
+		glScalef(0.75f, 8.0f, 4.0f);
+	glPopMatrix();
+	glRotatef(55.0f, 0.0f, 0.0f, 1.0f);
+	glTranslatef(-60.0f, 15.0f, 32.0f);
+
+	glTranslatef(60.0f, -15.0f, 32.0f);
+	glRotatef(-55.0f, 0.0f, 0.0f, 1.0f);
+	glPushMatrix();
+	glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(1.5f, 0.125f, 0.25f);
+		glutSolidCube(20.0f);
+		glScalef(0.75f, 8.0f, 4.0f);
+	glPopMatrix();	
+	glRotatef(55.0f, 0.0f, 0.0f, 1.0f);
+	glTranslatef(-60.0f, 15.0f, -32.0f);
+	//====fim das astes do vidro de tras==========/
+
+	//===========inicio do capô===============/
+	glTranslatef(-75.0f, -33.0f, 0.0f);
+	glPushMatrix();
+	glRotatef(10.0f, 0.0f, 0.0f, 1.0f);
+	glColor3f(0.0f, 1.0f, 0.0f);
+		glScalef(2.1f, 0.125f, 3.5f);
+		glutSolidCube(20.0f);
+		glScalef(0.476f, 8.0f, 0.285f);
+	glPopMatrix();
+	glRotatef(-10.0f, 0.0f, 0.0f, 1.0f);
+	glTranslatef(75.0f, 33.0f, 0.0f);
+	
+	
+
+
+	//========fim do inicio do capô============/
+
+
+
 
 	DesenhaEixos();
 
