@@ -1,12 +1,17 @@
 // Este código está baseado nos exemplos disponíveis no livro 
 // "OpenGL SuperBible", 2nd Edition, de Richard S. e Wright Jr.
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <GL/glut.h>
 #include <KHR/khrplatform.h>
+
+
 GLfloat angle, fAspect;
 GLfloat eixoX = 0.0f, eixoY = 0.0f, eixoZ = 0.0;
-
 GLfloat asas = 0.0f;
+float theta;
 
 void DesenhaEixos(void)
 {
@@ -502,10 +507,67 @@ void Desenha(void)
 
 	//=====================fim parte de baixo==========================//
 
+	//===================== Rodas ==========================//
+
+	glColor3f(0.7,0.7,0.7);
+	glPushMatrix();
+   		
+		glColor3f(0,0,0);
+
+		glPushMatrix();
+  			glTranslatef(-57.0f, -60.0f, 34.0f);
+  			glutSolidTorus(4.0, 11.6, 80, 80);
+  		glPopMatrix();
+  		
+  		glPushMatrix();
+  			glTranslatef(-57.0f, -60.0f, -34.0f);
+  			glutSolidTorus(4.0, 11.6, 80, 80);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(38.0f, -60.0f, 34.0f);
+  			glutSolidTorus(4.0, 11.6, 80, 80);
+  		glPopMatrix();
+
+		glPushMatrix();
+  			glTranslatef(38.0f, -60.0f, -34.0f);
+  			glutSolidTorus(4.0, 11.6, 80, 80);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glColor3f(0.86, 0.86, 0.86);
+  			glLineWidth(2.0);
+  			glBegin(GL_LINES);
+  				glVertex3f(-65.0f, -59.7f, 34.0f);
+  				glVertex3f(-46.0f, -59.7f, 34.0f);
+  				glVertex3f(-65.0f, -51.5f, 34.0f);
+  				glVertex3f(-48.0f, -70.0f, 34.0f);
+  			glEnd();
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glBegin(GL_LINES);
+
+  			glEnd();
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glBegin(GL_LINES);
+
+  			glEnd();
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glBegin(GL_LINES);
+
+  			glEnd();
+  		glPopMatrix();  		
+  	
+  	glPopMatrix();
+	
+	//===================== Fim das rodas ==========================//
 
 	DesenhaEixos();
-
-
 
 	// // Especifica sistema de coordenadas do modelo
 	// glMatrixMode(GL_MODELVIEW);
@@ -553,7 +615,7 @@ void Inicializa (void)
 	GLint especMaterial = 60;
 
  	// Especifica que a cor de fundo da janela será preta
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.2f, 0.2f, 0.2f, 0.2f);
 	
 	// Habilita o modelo de colorização de Gouraud
 	glShadeModel(GL_SMOOTH);
