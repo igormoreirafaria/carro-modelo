@@ -11,7 +11,7 @@
 GLfloat angle, fAspect;
 GLfloat eixoX = 0.0f, eixoY = 0.0f, eixoZ = 0.0;
 GLfloat asas = 0.0f;
-float theta;
+GLint rodas = 90;
 GLUquadricObj *obj = gluNewQuadric();
 
 void DesenhaEixos(void)
@@ -39,6 +39,7 @@ void processKeys(unsigned char key, int x, int y) {
 		case 'e': eixoX-=2.1; if(eixoX < -180) eixoX = -180; break;
 		case 'a': eixoY+=2.1; if(eixoY > 180) eixoY = 180; break;
 		case 'd': eixoY-=2.1; if(eixoY < -180) eixoY = -180; break;
+		case 'z': rodas+=4.0; break;
 		case 'b': asas = 8.5f; break;
 		case 'n': asas = 0.0f; break;
 		// case 'z': translacao_dedo1+=1.0; translacao_dedo2-=1.0; if (translacao_dedo1 > 0) translacao_dedo1 = 0; if (translacao_dedo2 < 0) translacao_dedo2 = 0; break;
@@ -469,6 +470,7 @@ void Desenha(void)
 	glPopMatrix();
 
 	//============fim da parte sem vidro da lateral de tras===============//
+	
 	//=====================parte de baixo============================//
 
 	glPushMatrix();
@@ -517,6 +519,7 @@ void Desenha(void)
 
 		glPushMatrix();
   			glTranslatef(-57.5f, -60.0f, 34.0f);
+  			glRotatef(rodas, 0, 0, 1);
   			glutSolidTorus(4.0, 11.6, 80, 80);
   			glColor3f(0.41, 0.41, 0.41);
   			glTranslatef(0.0f, 0.0f, -69.0f);
@@ -534,6 +537,7 @@ void Desenha(void)
   		glPushMatrix();
   			glColor3f(0.1, 0.1, 0.1);
   			glTranslatef(-57.5f, -60.0f, - 34.0f);
+  			glRotatef(rodas, 0, 0, 1);
   			glutSolidTorus(4.0, 11.6, 80, 80);
   			glColor3f(0.41, 0.41, 0.41);
   			glTranslatef(0.0f, 0.0f, -3.0f);
@@ -556,6 +560,7 @@ void Desenha(void)
   		glPushMatrix();
   			glColor3f(0.1, 0.1, 0.1);
   			glTranslatef(38.0f, -60.0f, 34.0f);
+  			glRotatef(rodas, 0, 0, 1);
   			glutSolidTorus(4.0, 11.6, 80, 80);
   			glColor3f(0.41, 0.41, 0.41);
   			glTranslatef(0.0f, 0.0f, -69.0f);
@@ -573,6 +578,7 @@ void Desenha(void)
 		glPushMatrix();
 			glColor3f(0.1, 0.1, 0.1);
   			glTranslatef(38.0f, -60.0f, -34.0f);
+  			glRotatef(rodas, 0, 0, 1);
   			glutSolidTorus(4.0, 11.6, 80, 80);
   			glColor3f(0.41, 0.41, 0.41);
   			glTranslatef(0.0f, 0.0f, -3.0f);
@@ -595,38 +601,6 @@ void Desenha(void)
   	glPopMatrix();
 	
 	//===================== Fim das rodas ==========================//
-
-	//DesenhaEixos();
-
-	// // Especifica sistema de coordenadas do modelo
-	// glMatrixMode(GL_MODELVIEW);
-	// // Inicializa sistema de coordenadas do modelo
-	// glLoadIdentity();
-	// // Especifica posição do observador e do alvo
- //  gluLookAt(0,80,200, 0,0,0, 0,1,0);
-	// // Limpa a janela e o depth buffer
-	// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	// DesenhaEixos();
-
-	// glColor3f(1.0f, 0.0f, 0.0f);
-	// glPushMatrix();
-	// 	glTranslatef(-60.0f, 0.0f, 0.0f);
-	// 	glutSolidSphere(30.0f, 10, 10);
-	// glPopMatrix();
-
-	// glPushMatrix();
-	// glColor3f(0.0f, 1.0f, 0.0f);
-	// 	glTranslatef(60.0f, 0.0f, 0.0f);
-	// 	glutSolidCube(20.0f);
-	// glPopMatrix();
-
-	// glPushMatrix();
-	// glColor3f(0.0f, 0.0f, 1.0f);
-	// 	glTranslatef(0.0f, 50.0f, 0.0f);
-	// 	glutSolidTeapot(20.0f);
-	// glPopMatrix();
-	// // Desenha o teapot com a cor corrente (solid)
 
 	glutSwapBuffers();
 }
@@ -722,7 +696,7 @@ int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(640,480);
+	glutInitWindowSize(800, 600);
 	glutCreateWindow("Visualizacao 3D");
 	glutDisplayFunc(Desenha);
     glutReshapeFunc(AlteraTamanhoJanela);
