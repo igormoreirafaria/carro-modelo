@@ -9,9 +9,8 @@
 
 
 GLfloat angle, fAspect;
-GLfloat eixoX = 0.0f, eixoY = 0.0f, eixoZ = 0.0;
-GLfloat asas = 0.0f;
-GLint rodas = 90;
+GLfloat eixoX = 0.0f, eixoY = 0.0f, eixoZ = 0.0, asas = 0.0f, base = 0.0f;
+GLint rodas = 0;
 GLUquadricObj *obj = gluNewQuadric();
 
 void DesenhaEixos(void)
@@ -39,7 +38,9 @@ void processKeys(unsigned char key, int x, int y) {
 		case 'e': eixoX-=2.1; if(eixoX < -180) eixoX = -180; break;
 		case 'a': eixoY+=2.1; if(eixoY > 180) eixoY = 180; break;
 		case 'd': eixoY-=2.1; if(eixoY < -180) eixoY = -180; break;
-		case 'z': rodas+=4.0; break;
+		case 'z': if(base == 0.0f) rodas += 4.0; break;
+		case 'x': base += 1.0; rodas = 0; if(base >= 30) base = 30; break;
+		case 'c': base -= 1.0; rodas = 0; if(base <= -30) base = -30; break;
 		case 'b': asas = 8.5f; break;
 		case 'n': asas = 0.0f; break;
 		// case 'z': translacao_dedo1+=1.0; translacao_dedo2-=1.0; if (translacao_dedo1 > 0) translacao_dedo1 = 0; if (translacao_dedo2 < 0) translacao_dedo2 = 0; break;
@@ -470,7 +471,7 @@ void Desenha(void)
 	glPopMatrix();
 
 	//============fim da parte sem vidro da lateral de tras===============//
-	
+
 	//=====================parte de baixo============================//
 
 	glPushMatrix();
@@ -517,86 +518,142 @@ void Desenha(void)
    		
 		glColor3f(0.1, 0.1, 0.1);
 
+		// Roda 1
+
 		glPushMatrix();
   			glTranslatef(-57.5f, -60.0f, 34.0f);
   			glRotatef(rodas, 0, 0, 1);
+  			glRotatef(base, 0, 1, 0);
   			glutSolidTorus(4.0, 11.6, 80, 80);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(-57.5f, -60.0f, 34.0f);
   			glColor3f(0.41, 0.41, 0.41);
-  			glTranslatef(0.0f, 0.0f, -69.0f);
+  			glRotatef(rodas, 0, 0, 1);
 			glRotatef(90, 1, 0, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   			glRotatef(180, 1, 0, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
-  			glRotatef(90, 1, 0, 0);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(-57.5f, -60.0f, 34.0f);
   			glRotatef(90, 0, 1, 0);
+  			glRotatef(base, 0, 1, 0);
+  			glRotatef(-rodas, 1, 0, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   			glRotatef(180, 0, 1, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   		glPopMatrix();
-  		
+
+  		// Roda 2
+
   		glPushMatrix();
   			glColor3f(0.1, 0.1, 0.1);
-  			glTranslatef(-57.5f, -60.0f, - 34.0f);
+  			glTranslatef(-57.5f, -60.0f, -34.0f);
   			glRotatef(rodas, 0, 0, 1);
+  			glRotatef(base, 0, 1, 0);
   			glutSolidTorus(4.0, 11.6, 80, 80);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(-57.5f, -60.0f, -34.0f);
   			glColor3f(0.41, 0.41, 0.41);
-  			glTranslatef(0.0f, 0.0f, -3.0f);
+  			glRotatef(rodas, 0, 0, 1);
+			glRotatef(90, 1, 0, 0);
+  			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
+  			glRotatef(180, 1, 0, 0);
+  			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(-57.5f, -60.0f, -34.0f);
+  			glRotatef(90, 0, 1, 0);
+  			glRotatef(base, 0, 1, 0);
+  			glRotatef(-rodas, 1, 0, 0);
+  			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
+  			glRotatef(180, 0, 1, 0);
+  			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glColor3f(0.41, 0.41, 0.41);
+  			glTranslatef(-57.5f, -60.0f, -37.0f);
   			gluCylinder(obj, 3.0, 3.0, 73.0, 50, 50);
   			gluDisk(obj, 0.0f, 3.0, 50, 1);
   			glTranslatef(0.0f, 0.0f, 73.0f);
   			gluDisk(obj, 0.0f, 3.0, 50, 1);
-  			glTranslatef(0.0f, 0.0f, -2.0f);
-			glRotatef(90, 1, 0, 0);
-  			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
-  			glRotatef(180, 1, 0, 0);
-  			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
-  			glRotatef(90, 1, 0, 0);
-  			glRotatef(90, 0, 1, 0);
-  			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
-  			glRotatef(180, 0, 1, 0);
-  			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   		glPopMatrix();
+
+  		// Roda 3
 
   		glPushMatrix();
   			glColor3f(0.1, 0.1, 0.1);
   			glTranslatef(38.0f, -60.0f, 34.0f);
   			glRotatef(rodas, 0, 0, 1);
+  			glRotatef(base, 0, 1, 0);
   			glutSolidTorus(4.0, 11.6, 80, 80);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(38.0f, -60.0f, 34.0f);
   			glColor3f(0.41, 0.41, 0.41);
-  			glTranslatef(0.0f, 0.0f, -69.0f);
+  			glRotatef(rodas, 0, 0, 1);
 			glRotatef(90, 1, 0, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   			glRotatef(180, 1, 0, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
-  			glRotatef(90, 1, 0, 0);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(38.0f, -60.0f, 34.0f);
   			glRotatef(90, 0, 1, 0);
+  			glRotatef(-rodas, 1, 0, 0);
+  			glRotatef(base, 0, 1, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   			glRotatef(180, 0, 1, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   		glPopMatrix();
 
-		glPushMatrix();
-			glColor3f(0.1, 0.1, 0.1);
+  		// Roda 4
+
+  		glPushMatrix();
+  			glColor3f(0.1, 0.1, 0.1);
   			glTranslatef(38.0f, -60.0f, -34.0f);
   			glRotatef(rodas, 0, 0, 1);
+  			glRotatef(base, 0, 1, 0);
   			glutSolidTorus(4.0, 11.6, 80, 80);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(38.0f, -60.0f, -34.0f);
   			glColor3f(0.41, 0.41, 0.41);
-  			glTranslatef(0.0f, 0.0f, -3.0f);
-  			gluCylinder(obj, 3.0, 3.0, 73.0, 50, 50);
-  			gluDisk(obj, 0.0f, 3.0, 50, 1);
-  			glTranslatef(0.0f, 0.0f, 73.0f);
-  			gluDisk(obj, 0.0f, 3.0, 50, 1);
-  			glTranslatef(0.0f, 0.0f, -2.0f);
+  			glRotatef(rodas, 0, 0, 1);
 			glRotatef(90, 1, 0, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   			glRotatef(180, 1, 0, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
-  			glRotatef(90, 1, 0, 0);
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glTranslatef(38.0f, -60.0f, -34.0f);
   			glRotatef(90, 0, 1, 0);
+  			glRotatef(-rodas, 1, 0, 0);
+  			glRotatef(base, 0, 1, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
   			glRotatef(180, 0, 1, 0);
   			gluCylinder(obj, 1.0, 1.0, 10.0, 30, 30);
-  		glPopMatrix();	
+  		glPopMatrix();
+
+  		glPushMatrix();
+  			glColor3f(0.41, 0.41, 0.41);
+  			glTranslatef(38.0f, -60.0f, -37.0f);
+  			gluCylinder(obj, 3.0, 3.0, 73.0, 50, 50);
+  			gluDisk(obj, 0.0f, 3.0, 50, 1);
+  			glTranslatef(0.0f, 0.0f, 73.0f);
+  			gluDisk(obj, 0.0f, 3.0, 50, 1);
+  		glPopMatrix();
   	
   	glPopMatrix();
 	
