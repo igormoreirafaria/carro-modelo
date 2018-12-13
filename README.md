@@ -18,6 +18,6 @@ make all
 
 <br>
 
-*Frederico Resende*<br/>
+*Frederico Resende e Igor Moreira Faria*<br/>
 *Disciplina de Computação Gráfica*<br/>
 *Prof. Daniel Madeira*
